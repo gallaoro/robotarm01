@@ -1,7 +1,7 @@
 import threading
 import math
 import time
-# from adafruit_servokit import ServoKit
+from adafruit_servokit import ServoKit
 
 # !!WARNING!! Here I use the degrees from my robot arm but they depends on how you mounted
 # your servo arm/attachements. Do not use this without checking them before or you will
@@ -104,7 +104,7 @@ class Robot:
     closeClamp = "CLOSE_CLAMP"
 
     def __init__(self):
-        # self.kit = kit = ServoKit(channels=16)
+        self.kit = kit = ServoKit(channels=16)
         self.alpha = 0 # degrees for base servo
         self.beta = 0 # degrees for main arm servo
         self.gamma = 0 # degrees for side arm servo
@@ -153,7 +153,7 @@ class Robot:
             return self.delta
 
     def __moveRaw(self, channel, angle):
-        # self.kit.servo[channel].angle = angle
+        self.kit.servo[channel].angle = angle
 
         if (channel == 12):
             self.alpha = angle
